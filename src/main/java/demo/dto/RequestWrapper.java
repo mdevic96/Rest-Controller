@@ -1,33 +1,34 @@
-package demo.db.entities;
+package demo.dto;
+
 
 import java.util.List;
 
 public class RequestWrapper {
 
-    private List<demo.db.entities.Car> cars;
-    private demo.db.entities.Truck truck;
+    private List<Car> cars;
+    private Truck truck;
 
     public RequestWrapper() {
     }
 
-    public RequestWrapper(List<demo.db.entities.Car> cars, demo.db.entities.Truck truck) {
+    public RequestWrapper(List<Car> cars, Truck truck) {
         this.cars = cars;
         this.truck = truck;
     }
 
-    public List<demo.db.entities.Car> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setCars(List<demo.db.entities.Car> cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public demo.db.entities.Truck getTruck() {
+    public Truck getTruck() {
         return truck;
     }
 
-    public void setTruck(demo.db.entities.Truck truck) {
+    public void setTruck(Truck truck) {
         this.truck = truck;
     }
 

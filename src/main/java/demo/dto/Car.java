@@ -17,6 +17,7 @@ public class Car implements Serializable {
         this.miles = miles;
     }
 
+
     public String getVin() {
         return vin;
     }

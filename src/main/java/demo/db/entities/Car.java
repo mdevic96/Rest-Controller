@@ -6,30 +6,30 @@ import javax.persistence.*;
 @Table(name = "Car")
 public class Car {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-    @Column(name = "vin")
-    private String vin;
+	@Column(name = "vin")
+	private String vin;
 
-    @Column(name = "color")
-    private String color;
+	@Column(name = "color")
+	private String color;
 
-    @Column(name = "miles")
-    private Integer miles;
+	@Column(name = "miles")
+	private Integer miles;
 
-    public Car() {
-    }
+	public Car() {
+	}
 
-    public Car(String vin, String color, Integer miles) {
-        this.vin = vin;
-        this.color = color;
-        this.miles = miles;
-    }
-    
-    public Long getId() {
+	public Car(String vin, String color, Integer miles) {
+		this.vin = vin;
+		this.color = color;
+		this.miles = miles;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -62,12 +62,15 @@ public class Car {
 	}
 
 	@Override
-    public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", vin='" + vin + '\'' +
-                ", color='" + color + '\'' +
-                ", miles=" + miles +
-                '}';
-    }
+	public String toString() {
+		return "Car{" +
+				"id=" + id +
+				", vin='" + vin + '\'' +
+				", color='" + color + '\'' +
+				", miles=" + miles +
+				'}';
+	}
+
+
 }
+
