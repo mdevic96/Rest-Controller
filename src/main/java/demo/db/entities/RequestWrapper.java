@@ -1,34 +1,33 @@
-package demo.dto;
+package demo.db.entities;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class RequestWrapper implements Serializable {
+public class RequestWrapper {
 
-    private List<Car> cars;
-    private Truck truck;
+    private List<demo.db.entities.Car> cars;
+    private demo.db.entities.Truck truck;
 
     public RequestWrapper() {
     }
 
-    public RequestWrapper(List<Car> cars, Truck truck) {
+    public RequestWrapper(List<demo.db.entities.Car> cars, demo.db.entities.Truck truck) {
         this.cars = cars;
         this.truck = truck;
     }
 
-    public List<Car> getCars() {
+    public List<demo.db.entities.Car> getCars() {
         return cars;
     }
 
-    public void setCars(List<Car> cars) {
+    public void setCars(List<demo.db.entities.Car> cars) {
         this.cars = cars;
     }
 
-    public Truck getTruck() {
+    public demo.db.entities.Truck getTruck() {
         return truck;
     }
 
-    public void setTruck(Truck truck) {
+    public void setTruck(demo.db.entities.Truck truck) {
         this.truck = truck;
     }
 
