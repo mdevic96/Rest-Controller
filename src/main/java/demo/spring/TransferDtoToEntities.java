@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MergeDtoAndEntities {
+public class TransferDtoToEntities {
 
     @Autowired
     private CarRepository carRepository;
@@ -20,16 +20,12 @@ public class MergeDtoAndEntities {
 
 
     public ResponseEntity<Car> update(Car car) {
-        car.setMiles(car.getMiles() + 100);
         demo.db.entities.Car car1 = dtoToEntity(car);
         carRepository.save(car1);
         return new ResponseEntity<>(car, HttpStatus.OK);
     }
 
     public ResponseEntity<RequestWrapper> updateWithMultipleObjects(RequestWrapper wrapper) {
-        wrapper.getCars().forEach(c -> c.setMiles(c.getMiles() + 100));
-        wrapper.getTruck().setMiles(455);
-
         demo.db.entities.Truck truck = dtoToEntityTruck(wrapper.getTruck());
 
         wrapper.getCars().stream().map(this::dtoToEntity).forEach(e -> carRepository.save(e));
@@ -39,9 +35,6 @@ public class MergeDtoAndEntities {
     }
 
     public ResponseEntity<Truck> update(Truck truck) {
-        truck.setMiles(truck.getMiles() + 222);
-        truck.setColor("Gray but Red");
-
         dtoToEntityTruck(truck);
 
         return new ResponseEntity<>(truck, HttpStatus.OK);

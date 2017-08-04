@@ -1,6 +1,5 @@
 package demo.dto;
 
-
 import java.util.List;
 
 public class RequestWrapper {

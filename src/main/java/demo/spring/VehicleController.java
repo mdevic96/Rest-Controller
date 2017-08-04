@@ -17,60 +17,60 @@ import java.util.List;
 @RestController
 public class VehicleController {
 
-    @Autowired
-    private MergeDtoAndEntities md;
+	@Autowired
+	private TransferDtoToEntities md;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity<Car> get() {
-        Car car = new Car("555", "Red", 110);
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ResponseEntity<Car> get() {
+		Car car = new Car("555", "Red", 110);
 
-        writeToFile(car);
+		writeToFile(car);
 
-        return new ResponseEntity<>(car, HttpStatus.OK);
-    }
+		return new ResponseEntity<>(car, HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/cars", method = RequestMethod.POST)
-    public ResponseEntity<List<Car>> update(@RequestBody List<Car> cars) {
-        cars.forEach(c -> c.setMiles(c.getMiles() + 100));
-        writeToFile(cars);
+	@RequestMapping(value = "/cars", method = RequestMethod.POST)
+	public ResponseEntity<List<Car>> update(@RequestBody List<Car> cars) {
+		cars.forEach(c -> c.setMiles(c.getMiles() + 100));
+		writeToFile(cars);
 
-        if (!cars.isEmpty()) {
-            cars.forEach(c -> md.update(c));
-        }
+		if (!cars.isEmpty()) {
+			cars.forEach(c -> md.update(c));
+		}
 
-        return new ResponseEntity<>(cars, HttpStatus.OK);
-    }
+		return new ResponseEntity<>(cars, HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/truck", method = RequestMethod.POST)
-    public ResponseEntity<Truck> update(@RequestBody Truck truck) {
-        truck.setMiles(truck.getMiles() + 222);
-        truck.setColor("Gray but Red");
+	@RequestMapping(value = "/truck", method = RequestMethod.POST)
+	public ResponseEntity<Truck> update(@RequestBody Truck truck) {
+		truck.setMiles(truck.getMiles() + 222);
+		truck.setColor("Gray but Red");
 
-        md.update(truck);
+		md.update(truck);
 
-        return new ResponseEntity<>(truck, HttpStatus.OK);
-    }
+		return new ResponseEntity<>(truck, HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/carsandtrucks", method = RequestMethod.POST)
-    public ResponseEntity<RequestWrapper> updateWithMultipleObjects(@RequestBody RequestWrapper wrapper) {
-        wrapper.getCars().forEach(c -> c.setMiles(c.getMiles() + 100));
-        wrapper.getTruck().setMiles(455);
+	@RequestMapping(value = "/carsandtrucks", method = RequestMethod.POST)
+	public ResponseEntity<RequestWrapper> updateWithMultipleObjects(@RequestBody RequestWrapper wrapper) {
+		wrapper.getCars().forEach(c -> c.setMiles(c.getMiles() + 100));
+		wrapper.getTruck().setMiles(455);
 
-        md.updateWithMultipleObjects(wrapper);
+		md.updateWithMultipleObjects(wrapper);
 
-        writeToFile(wrapper);
+		writeToFile(wrapper);
 
-        return new ResponseEntity<>(wrapper, HttpStatus.OK);
-    }
+		return new ResponseEntity<>(wrapper, HttpStatus.OK);
+	}
 
-    private <T> void writeToFile(T object) {
-        try (OutputStream file = new FileOutputStream("test.txt");
-             OutputStream buffer = new BufferedOutputStream(file);
-             ObjectOutput output = new ObjectOutputStream(buffer);) {
-            output.writeObject(object.toString());
-            output.writeChars("\n");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
+	private <T> void writeToFile(T object) {
+		try (OutputStream file = new FileOutputStream("test.txt");
+				OutputStream buffer = new BufferedOutputStream(file);
+				ObjectOutput output = new ObjectOutputStream(buffer);) {
+			output.writeObject(object.toString());
+			output.writeChars("\n");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
 }
