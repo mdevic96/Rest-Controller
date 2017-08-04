@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TransferDtoAndEntities {
+public class TransferDtoToEntities {
 
     @Autowired
     private CarRepository carRepository;
