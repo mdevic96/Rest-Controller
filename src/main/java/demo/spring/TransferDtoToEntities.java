@@ -18,7 +18,6 @@ public class TransferDtoToEntities {
     @Autowired
     private TruckRepository truckRepository;
 
-
     public ResponseEntity<Car> update(Car car) {
         demo.db.entities.Car car1 = dtoToEntity(car);
         carRepository.save(car1);
@@ -43,7 +42,6 @@ public class TransferDtoToEntities {
     private demo.db.entities.Car dtoToEntity(Car car) {
         return new demo.db.entities.Car(car.getVin(), car.getColor(), car.getMiles());
     }
-
     private demo.db.entities.Truck dtoToEntityTruck(Truck truck) {
         return new demo.db.entities.Truck(truck.getVin(), truck.getColor(), truck.getMiles());
     }
