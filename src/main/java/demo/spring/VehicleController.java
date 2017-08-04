@@ -18,7 +18,7 @@ import java.util.List;
 public class VehicleController {
 
     @Autowired
-    private MergeDtoAndEntities md;
+    private TransferDtoAndEntities md;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<Car> get() {
